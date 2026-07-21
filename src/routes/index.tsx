@@ -34,8 +34,7 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb432d7c-03ed-452f-b78d-db9ddd02f73f/id-preview-274964cf--9601da22-139c-44ac-b31b-a908327d62dc.lovable.app-1783664533790.png",
+        content: "https://destiny-decode.lovable.app/favicon.png",
       },
     ],
   }),

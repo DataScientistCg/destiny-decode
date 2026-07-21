@@ -26,14 +26,15 @@ import {
   CheckCircle2,
   MessageCircle,
 } from "lucide-react";
+import brandLogo from "@/assets/brand-logo.jpg.asset.json";
+import profilePhoto from "@/assets/profile-photo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
         property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fb432d7c-03ed-452f-b78d-db9ddd02f73f/id-preview-274964cf--9601da22-139c-44ac-b31b-a908327d62dc.lovable.app-1783664533790.png",
+        content: "https://destiny-decode.lovable.app/favicon.png",
       },
     ],
   }),
@@ -116,8 +117,8 @@ function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
         <a href="#home" className="flex items-center gap-3 group shrink-0">
-          <div className="h-11 w-11 rounded-lg bg-gradient-gold grid place-items-center shadow-gold font-display font-bold text-primary-foreground text-lg">
-            DD
+          <div className="h-11 w-11 rounded-lg overflow-hidden shadow-gold border border-[color:var(--gold)]/40 bg-background">
+            <img src={brandLogo.url} alt="Destiny Decode logo" className="h-full w-full object-cover" />
           </div>
           <div className="hidden sm:flex flex-col leading-none">
             <span className="font-display text-lg font-bold text-gradient-gold tracking-wider">DESTINY</span>
@@ -176,6 +177,9 @@ function Hero() {
         <div className="absolute bottom-0 -right-24 h-96 w-96 rounded-full bg-[color:var(--gold-dark)]/15 blur-3xl float-slow" style={{ animationDelay: "2s" }} />
       </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <div className="mx-auto mb-8 h-28 w-28 sm:h-32 sm:w-32 rounded-full overflow-hidden border border-[color:var(--gold)]/50 shadow-gold-lg float-slow bg-background hover:scale-105 transition-transform">
+          <img src={brandLogo.url} alt="Destiny Decode brand logo" className="h-full w-full object-cover" />
+        </div>
         <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-[color:var(--gold)] fade-up">
           <Sparkles className="h-3.5 w-3.5" /> Know Your Numbers. Know Yourself.
         </div>
@@ -256,16 +260,17 @@ function About() {
     <section id="about" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div className="relative">
-          <div className="aspect-[4/5] rounded-3xl glass overflow-hidden relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[color:var(--gold)]/20 via-transparent to-[color:var(--gold-dark)]/25" />
-            <div className="absolute inset-0 grid place-items-center">
-              <div className="text-center px-8">
-                <div className="mx-auto h-28 w-28 rounded-full bg-gradient-gold grid place-items-center shadow-gold-lg mb-6">
-                  <span className="font-display text-4xl font-bold text-primary-foreground">SB</span>
-                </div>
-                <div className="font-display text-2xl font-bold text-gradient-gold">Sudhanshuu Bharti</div>
-                <div className="text-sm text-muted-foreground mt-1">Numerology Consultant</div>
-              </div>
+          <div className="aspect-[4/5] rounded-3xl glass overflow-hidden relative shadow-gold-lg">
+            <img
+              src={profilePhoto.url}
+              alt="Sudhanshuu Bharti — Numerology Consultant"
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 p-6 text-center">
+              <div className="font-display text-2xl font-bold text-gradient-gold">Sudhanshuu Bharti</div>
+              <div className="text-sm text-muted-foreground mt-1">Numerology Consultant</div>
             </div>
           </div>
           <div className="absolute -bottom-6 -right-6 glass rounded-2xl px-5 py-4 shadow-gold hidden sm:block">
@@ -479,8 +484,8 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="h-11 w-11 rounded-lg bg-gradient-gold grid place-items-center shadow-gold font-display font-bold text-primary-foreground">
-                DD
+              <div className="h-11 w-11 rounded-lg overflow-hidden shadow-gold border border-[color:var(--gold)]/40 bg-background">
+                <img src={brandLogo.url} alt="Destiny Decode logo" className="h-full w-full object-cover" />
               </div>
               <div>
                 <div className="font-display text-lg font-bold text-gradient-gold tracking-wider">DESTINY DECODE</div>

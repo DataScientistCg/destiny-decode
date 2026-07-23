@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
 });
 
 const APPLY_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLScExaZfsVw_M__q5f5_ppeFcPMfj518_LgOEPdoa3l5_1Uwew/viewform";
+  "https://docs.google.com/forms/d/e/1FAIpQLSc4gr6Y9BI0r3I5gYlN3K9VMgytIMOLXlnQ4YgzrtACQ6WLQQ/viewform";
 const INSTAGRAM_URL =
   "https://www.instagram.com/destiny_decod?igsh=MWdtdTNnaTA5amdvbw%3D%3D&utm_source=qr";
 const PHONE = "7065-455-955";
@@ -51,25 +51,22 @@ const EMAIL = "infodestinydecode@gmail.com";
 const NAV = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Calculators", href: "#calculators" },
   { label: "Services", href: "#services" },
   { label: "Payment", href: "#payment" },
   { label: "Contact", href: "#contact" },
 ];
 
-const CALCULATORS = [
-  { icon: Sparkles, name: "Life Path Number", desc: "Discover your life purpose and true potential" },
-  { icon: Star, name: "Destiny Number", desc: "Your soul's blueprint from date of birth" },
-  { icon: Heart, name: "Soul Urge Number", desc: "Uncover your deepest heart desires" },
-  { icon: User, name: "Expression Number", desc: "How you express yourself to the world" },
-  { icon: Calculator, name: "Lo Shu Grid", desc: "Analyze your strengths & weaknesses" },
-  { icon: Signature, name: "Name Numerology", desc: "Find the perfect name for success" },
-  { icon: Smartphone, name: "Mobile Number Analysis", desc: "Know how your number impacts your life" },
-  { icon: Briefcase, name: "Business Name Analysis", desc: "Check luck & success of your business" },
-];
+type Service = {
+  icon: typeof Sparkles;
+  name: string;
+  price: string;
+  oldPrice?: string;
+  offer?: string;
+  desc: string;
+};
 
-const SERVICES = [
-  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹499", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
+const SERVICES: Service[] = [
+  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹1199", oldPrice: "₹499", offer: "50% OFF on First Consultation", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
   { icon: Signature, name: "Name Correction", price: "₹1499", desc: "Refine your name spelling to align with prosperity and success vibrations." },
   { icon: Briefcase, name: "Business Name Calculation & Suitability", price: "₹2100", desc: "Brand and business name analysis for growth, luck and long-term success." },
   { icon: Car, name: "Car Number Suggestion", price: "₹1100", desc: "Choose a vehicle number that supports safety, harmony and prosperity." },

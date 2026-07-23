@@ -62,11 +62,12 @@ type Service = {
   price: string;
   oldPrice?: string;
   offer?: string;
+  savings?: string;
   desc: string;
 };
 
 const SERVICES: Service[] = [
-  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹1199", oldPrice: "₹499", offer: "50% OFF on First Consultation", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
+  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹499", oldPrice: "₹1100", offer: "50% OFF – First Consultation", savings: "₹601", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
   { icon: Signature, name: "Name Correction", price: "₹1499", desc: "Refine your name spelling to align with prosperity and success vibrations." },
   { icon: Briefcase, name: "Business Name Calculation & Suitability", price: "₹2100", desc: "Brand and business name analysis for growth, luck and long-term success." },
   { icon: Car, name: "Car Number Suggestion", price: "₹1100", desc: "Choose a vehicle number that supports safety, harmony and prosperity." },
@@ -299,7 +300,7 @@ function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Premium Offerings" title="Our" highlight="Services" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map(({ icon: Icon, name, price, oldPrice, offer, desc }) => (
+          {SERVICES.map(({ icon: Icon, name, price, oldPrice, offer, savings, desc }) => (
             <div key={name} className={`relative glass glass-hover rounded-2xl p-6 flex flex-col ${offer ? "ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg" : ""}`}>
               {offer && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap">
@@ -311,13 +312,32 @@ function Services() {
                   <Icon className="h-5 w-5 text-primary-foreground" />
                 </div>
                 <div className="text-right">
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Price</div>
-                  <div className="flex items-baseline justify-end gap-2 leading-none">
-                    {oldPrice && (
-                      <span className="text-sm text-muted-foreground line-through">{oldPrice}</span>
-                    )}
-                    <span className="font-display text-2xl font-bold text-gradient-gold">{price}</span>
-                  </div>
+                  {offer ? (
+                    <>
+                      <div className="text-[10px] uppercase tracking-widest text-[color:var(--gold-dark)] font-semibold">Limited Time Offer</div>
+                      <div className="flex items-baseline justify-end gap-2 leading-none mt-1">
+                        {oldPrice && (
+                          <span className="text-sm text-muted-foreground line-through">{oldPrice}</span>
+                        )}
+                        <span className="font-display text-3xl font-bold text-gradient-gold">{price}</span>
+                      </div>
+                      {savings && (
+                        <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[color:var(--gold)]/10 border border-[color:var(--gold)]/30 px-2 py-0.5 text-[11px] font-semibold text-[color:var(--gold-dark)]">
+                          You Save {savings}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Price</div>
+                      <div className="flex items-baseline justify-end gap-2 leading-none">
+                        {oldPrice && (
+                          <span className="text-sm text-muted-foreground line-through">{oldPrice}</span>
+                        )}
+                        <span className="font-display text-2xl font-bold text-gradient-gold">{price}</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground">{name}</h3>

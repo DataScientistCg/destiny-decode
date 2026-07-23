@@ -62,6 +62,7 @@ type Service = {
   price: string;
   oldPrice?: string;
   offer?: string;
+  savings?: string;
   desc: string;
 };
 

@@ -4,7 +4,6 @@ import {
   Phone,
   Instagram,
   Mail,
-  MapPin,
   Sparkles,
   Star,
   ShieldCheck,
@@ -12,12 +11,10 @@ import {
   ArrowUpRight,
   Menu,
   X,
-  Calculator,
   Heart,
   Baby,
   Briefcase,
   Car,
-  User,
   Users,
   Signature,
   Smartphone,
@@ -25,6 +22,7 @@ import {
   QrCode,
   CheckCircle2,
   MessageCircle,
+  Flame,
 } from "lucide-react";
 import brandLogo from "@/assets/brand-logo.jpg.asset.json";
 import profilePhoto from "@/assets/profile-photo.jpg.asset.json";
@@ -42,7 +40,7 @@ export const Route = createFileRoute("/")({
 });
 
 const APPLY_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLScExaZfsVw_M__q5f5_ppeFcPMfj518_LgOEPdoa3l5_1Uwew/viewform";
+  "https://docs.google.com/forms/d/e/1FAIpQLSc4gr6Y9BI0r3I5gYlN3K9VMgytIMOLXlnQ4YgzrtACQ6WLQQ/viewform";
 const INSTAGRAM_URL =
   "https://www.instagram.com/destiny_decod?igsh=MWdtdTNnaTA5amdvbw%3D%3D&utm_source=qr";
 const PHONE = "7065-455-955";
@@ -53,25 +51,22 @@ const EMAIL = "infodestinydecode@gmail.com";
 const NAV = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Calculators", href: "#calculators" },
   { label: "Services", href: "#services" },
   { label: "Payment", href: "#payment" },
   { label: "Contact", href: "#contact" },
 ];
 
-const CALCULATORS = [
-  { icon: Sparkles, name: "Life Path Number", desc: "Discover your life purpose and true potential" },
-  { icon: Star, name: "Destiny Number", desc: "Your soul's blueprint from date of birth" },
-  { icon: Heart, name: "Soul Urge Number", desc: "Uncover your deepest heart desires" },
-  { icon: User, name: "Expression Number", desc: "How you express yourself to the world" },
-  { icon: Calculator, name: "Lo Shu Grid", desc: "Analyze your strengths & weaknesses" },
-  { icon: Signature, name: "Name Numerology", desc: "Find the perfect name for success" },
-  { icon: Smartphone, name: "Mobile Number Analysis", desc: "Know how your number impacts your life" },
-  { icon: Briefcase, name: "Business Name Analysis", desc: "Check luck & success of your business" },
-];
+type Service = {
+  icon: typeof Sparkles;
+  name: string;
+  price: string;
+  oldPrice?: string;
+  offer?: string;
+  desc: string;
+};
 
-const SERVICES = [
-  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹499", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
+const SERVICES: Service[] = [
+  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹1199", oldPrice: "₹499", offer: "50% OFF on First Consultation", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
   { icon: Signature, name: "Name Correction", price: "₹1499", desc: "Refine your name spelling to align with prosperity and success vibrations." },
   { icon: Briefcase, name: "Business Name Calculation & Suitability", price: "₹2100", desc: "Brand and business name analysis for growth, luck and long-term success." },
   { icon: Car, name: "Car Number Suggestion", price: "₹1100", desc: "Choose a vehicle number that supports safety, harmony and prosperity." },
@@ -234,26 +229,6 @@ function SectionHeader({ eyebrow, title, highlight }: { eyebrow: string; title: 
   );
 }
 
-function Calculators() {
-  return (
-    <section id="calculators" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader eyebrow="Powerful Numerology Tools" title="Explore Our" highlight="Calculators" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {CALCULATORS.map(({ icon: Icon, name, desc }) => (
-            <div key={name} className="glass glass-hover rounded-2xl p-6">
-              <div className="h-12 w-12 rounded-xl bg-gradient-gold grid place-items-center shadow-gold mb-4">
-                <Icon className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-lg font-semibold text-foreground mb-1.5">{name}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function About() {
   return (
@@ -324,15 +299,25 @@ function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Premium Offerings" title="Our" highlight="Services" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map(({ icon: Icon, name, price, desc }) => (
-            <div key={name} className="glass glass-hover rounded-2xl p-6 flex flex-col">
+          {SERVICES.map(({ icon: Icon, name, price, oldPrice, offer, desc }) => (
+            <div key={name} className={`relative glass glass-hover rounded-2xl p-6 flex flex-col ${offer ? "ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg" : ""}`}>
+              {offer && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap">
+                  <Flame className="h-3.5 w-3.5" /> {offer}
+                </div>
+              )}
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div className="h-12 w-12 rounded-xl bg-gradient-gold grid place-items-center shadow-gold shrink-0">
                   <Icon className="h-5 w-5 text-primary-foreground" />
                 </div>
                 <div className="text-right">
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Price</div>
-                  <div className="font-display text-2xl font-bold text-gradient-gold leading-none">{price}</div>
+                  <div className="flex items-baseline justify-end gap-2 leading-none">
+                    {oldPrice && (
+                      <span className="text-sm text-muted-foreground line-through">{oldPrice}</span>
+                    )}
+                    <span className="font-display text-2xl font-bold text-gradient-gold">{price}</span>
+                  </div>
                 </div>
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground">{name}</h3>
@@ -437,9 +422,8 @@ function Contact() {
     <section id="contact" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Ready to Begin?" title="Get Your" highlight="Personal Consultation" />
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6">
           {[
-            { icon: MapPin, label: "Office", value: "NEW DELHI" },
             { icon: Phone, label: "Phone", value: PHONE, href: `tel:${PHONE_TEL}` },
             { icon: Instagram, label: "Instagram", value: "@destiny_decod", href: INSTAGRAM_URL, external: true },
           ].map(({ icon: Icon, label, value, href, external }) => (
@@ -527,7 +511,7 @@ function Footer() {
           <div>
             <div className="font-display text-sm font-semibold text-gradient-gold uppercase tracking-widest mb-4">Contact</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2"><MapPin className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> NEW DELHI</li>
+              
               <li className="flex items-start gap-2"><Phone className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> <a href={`tel:${PHONE_TEL}`} className="hover:text-[color:var(--gold)] transition-colors">{PHONE}</a></li>
               <li className="flex items-start gap-2"><Mail className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> <a href={`mailto:${EMAIL}`} className="hover:text-[color:var(--gold)] transition-colors break-all">{EMAIL}</a></li>
               <li className="flex items-start gap-2"><Instagram className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--gold)] transition-colors">@destiny_decod</a></li>
@@ -577,7 +561,7 @@ function Index() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <Calculators />
+        
         <About />
         <Services />
         <Payment />

@@ -229,26 +229,6 @@ function SectionHeader({ eyebrow, title, highlight }: { eyebrow: string; title: 
   );
 }
 
-function Calculators() {
-  return (
-    <section id="calculators" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader eyebrow="Powerful Numerology Tools" title="Explore Our" highlight="Calculators" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {CALCULATORS.map(({ icon: Icon, name, desc }) => (
-            <div key={name} className="glass glass-hover rounded-2xl p-6">
-              <div className="h-12 w-12 rounded-xl bg-gradient-gold grid place-items-center shadow-gold mb-4">
-                <Icon className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-lg font-semibold text-foreground mb-1.5">{name}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function About() {
   return (

@@ -551,7 +551,7 @@ function Index() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <Calculators />
+        
         <About />
         <Services />
         <Payment />

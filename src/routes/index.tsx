@@ -66,7 +66,7 @@ type Service = {
 };
 
 const SERVICES: Service[] = [
-  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹1199", oldPrice: "₹499", offer: "50% OFF on First Consultation", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
+  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹499", oldPrice: "₹1100", offer: "50% OFF – First Consultation", savings: "₹601", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
   { icon: Signature, name: "Name Correction", price: "₹1499", desc: "Refine your name spelling to align with prosperity and success vibrations." },
   { icon: Briefcase, name: "Business Name Calculation & Suitability", price: "₹2100", desc: "Brand and business name analysis for growth, luck and long-term success." },
   { icon: Car, name: "Car Number Suggestion", price: "₹1100", desc: "Choose a vehicle number that supports safety, harmony and prosperity." },

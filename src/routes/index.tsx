@@ -299,15 +299,25 @@ function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Premium Offerings" title="Our" highlight="Services" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map(({ icon: Icon, name, price, desc }) => (
-            <div key={name} className="glass glass-hover rounded-2xl p-6 flex flex-col">
+          {SERVICES.map(({ icon: Icon, name, price, oldPrice, offer, desc }) => (
+            <div key={name} className={`relative glass glass-hover rounded-2xl p-6 flex flex-col ${offer ? "ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg" : ""}`}>
+              {offer && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap">
+                  <Flame className="h-3.5 w-3.5" /> {offer}
+                </div>
+              )}
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div className="h-12 w-12 rounded-xl bg-gradient-gold grid place-items-center shadow-gold shrink-0">
                   <Icon className="h-5 w-5 text-primary-foreground" />
                 </div>
                 <div className="text-right">
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Price</div>
-                  <div className="font-display text-2xl font-bold text-gradient-gold leading-none">{price}</div>
+                  <div className="flex items-baseline justify-end gap-2 leading-none">
+                    {oldPrice && (
+                      <span className="text-sm text-muted-foreground line-through">{oldPrice}</span>
+                    )}
+                    <span className="font-display text-2xl font-bold text-gradient-gold">{price}</span>
+                  </div>
                 </div>
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground">{name}</h3>

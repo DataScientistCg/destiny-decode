@@ -32,35 +32,50 @@
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-gold-dark: var(--gold-dark);
-  --font-display: "Playfair Display", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: Georgia, "Times New Roman", ui-serif, serif;
+  --font-sans: Georgia, "Times New Roman", ui-serif, serif;
 }
 
+/* Green + Beige luxury palette. Legacy tokens (--gold*) are repurposed to
+   emerald/forest greens so all existing utility classes keep working without a
+   rename across the app. */
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.14 0.01 60);
-  --foreground: oklch(0.95 0.01 80);
-  --card: oklch(0.18 0.012 60);
-  --card-foreground: oklch(0.95 0.01 80);
-  --popover: oklch(0.18 0.012 60);
-  --popover-foreground: oklch(0.95 0.01 80);
-  --primary: oklch(0.82 0.14 85);
-  --primary-foreground: oklch(0.14 0.01 60);
-  --secondary: oklch(0.22 0.015 60);
-  --secondary-foreground: oklch(0.95 0.01 80);
-  --muted: oklch(0.22 0.015 60);
-  --muted-foreground: oklch(0.68 0.02 70);
-  --accent: oklch(0.24 0.02 70);
-  --accent-foreground: oklch(0.95 0.01 80);
+
+  /* Warm beige / cream background */
+  --background: oklch(0.96 0.02 90);
+  --foreground: oklch(0.22 0.04 150);
+
+  /* Soft beige cards */
+  --card: oklch(0.94 0.025 88);
+  --card-foreground: oklch(0.22 0.04 150);
+  --popover: oklch(0.94 0.025 88);
+  --popover-foreground: oklch(0.22 0.04 150);
+
+  /* Deep emerald as primary */
+  --primary: oklch(0.48 0.14 155);
+  --primary-foreground: oklch(0.98 0.01 90);
+
+  --secondary: oklch(0.9 0.03 90);
+  --secondary-foreground: oklch(0.25 0.05 150);
+
+  --muted: oklch(0.9 0.02 90);
+  --muted-foreground: oklch(0.42 0.03 150);
+
+  --accent: oklch(0.85 0.06 150);
+  --accent-foreground: oklch(0.22 0.05 150);
+
   --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.98 0.005 80);
-  --border: oklch(0.28 0.02 70 / 40%);
-  --input: oklch(0.28 0.02 70);
-  --ring: oklch(0.82 0.14 85);
 
-  --gold: oklch(0.82 0.14 85);
-  --gold-light: oklch(0.9 0.12 92);
-  --gold-dark: oklch(0.62 0.13 70);
+  --border: oklch(0.5 0.12 155 / 25%);
+  --input: oklch(0.5 0.12 155 / 40%);
+  --ring: oklch(0.48 0.14 155);
+
+  /* "gold" tokens repurposed to emerald greens */
+  --gold: oklch(0.48 0.14 155);        /* deep emerald */
+  --gold-light: oklch(0.78 0.12 150);  /* light sage */
+  --gold-dark: oklch(0.36 0.11 155);   /* forest green */
 }
 
 @layer base {
@@ -71,51 +86,54 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     background-image:
-      radial-gradient(1200px 600px at 10% -10%, oklch(0.82 0.14 85 / 0.08), transparent 60%),
-      radial-gradient(900px 500px at 100% 10%, oklch(0.62 0.13 70 / 0.10), transparent 60%),
-      radial-gradient(700px 400px at 50% 100%, oklch(0.82 0.14 85 / 0.06), transparent 60%);
+      radial-gradient(1200px 600px at 10% -10%, oklch(0.48 0.14 155 / 0.10), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, oklch(0.78 0.12 150 / 0.14), transparent 60%),
+      radial-gradient(700px 400px at 50% 100%, oklch(0.36 0.11 155 / 0.08), transparent 60%);
     background-attachment: fixed;
+  }
+  h1, h2, h3, h4, h5, h6, p, a, button, li, span, div, input, textarea, select {
+    font-family: Georgia, "Times New Roman", ui-serif, serif;
   }
   h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: -0.01em; }
 }
 
 @utility text-gradient-gold {
-  background-image: linear-gradient(135deg, oklch(0.92 0.11 92), oklch(0.82 0.14 85) 45%, oklch(0.62 0.13 70));
+  background-image: linear-gradient(135deg, oklch(0.55 0.15 155), oklch(0.42 0.14 155) 50%, oklch(0.32 0.10 155));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility bg-gradient-gold {
-  background-image: linear-gradient(135deg, oklch(0.9 0.12 92), oklch(0.78 0.15 85) 50%, oklch(0.6 0.13 70));
+  background-image: linear-gradient(135deg, oklch(0.56 0.15 155), oklch(0.44 0.14 155) 50%, oklch(0.34 0.11 155));
 }
 
 @utility shadow-gold {
   box-shadow:
-    0 10px 30px -12px oklch(0.82 0.14 85 / 0.45),
-    0 4px 12px -4px oklch(0.62 0.13 70 / 0.35);
+    0 10px 30px -12px oklch(0.48 0.14 155 / 0.45),
+    0 4px 12px -4px oklch(0.36 0.11 155 / 0.35);
 }
 
 @utility shadow-gold-lg {
   box-shadow:
-    0 25px 60px -20px oklch(0.82 0.14 85 / 0.55),
-    0 10px 25px -10px oklch(0.62 0.13 70 / 0.45);
+    0 25px 60px -20px oklch(0.48 0.14 155 / 0.55),
+    0 10px 25px -10px oklch(0.36 0.11 155 / 0.45);
 }
 
 @utility glass {
-  background: linear-gradient(135deg, oklch(1 0 0 / 0.05), oklch(1 0 0 / 0.02));
+  background: linear-gradient(135deg, oklch(1 0 0 / 0.55), oklch(0.94 0.03 90 / 0.45));
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid oklch(0.82 0.14 85 / 0.18);
+  border: 1px solid oklch(0.48 0.14 155 / 0.22);
 }
 
 @utility glass-hover {
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
   &:hover {
     transform: translateY(-4px);
-    border-color: oklch(0.82 0.14 85 / 0.5);
-    background: linear-gradient(135deg, oklch(0.82 0.14 85 / 0.08), oklch(1 0 0 / 0.03));
-    box-shadow: 0 20px 40px -20px oklch(0.82 0.14 85 / 0.35);
+    border-color: oklch(0.48 0.14 155 / 0.55);
+    background: linear-gradient(135deg, oklch(0.48 0.14 155 / 0.10), oklch(1 0 0 / 0.5));
+    box-shadow: 0 20px 40px -20px oklch(0.48 0.14 155 / 0.4);
   }
 }
 
@@ -128,13 +146,13 @@
   border-radius: 9999px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: oklch(0.14 0.01 60);
-  background-image: linear-gradient(135deg, oklch(0.92 0.11 92), oklch(0.78 0.15 85) 50%, oklch(0.6 0.13 70));
+  color: oklch(0.98 0.01 90);
+  background-image: linear-gradient(135deg, oklch(0.56 0.15 155), oklch(0.44 0.14 155) 50%, oklch(0.32 0.11 155));
   box-shadow:
-    0 10px 30px -12px oklch(0.82 0.14 85 / 0.55),
-    inset 0 1px 0 oklch(1 0 0 / 0.35);
+    0 10px 30px -12px oklch(0.48 0.14 155 / 0.55),
+    inset 0 1px 0 oklch(1 0 0 / 0.25);
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-  &:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 18px 45px -18px oklch(0.82 0.14 85 / 0.75), inset 0 1px 0 oklch(1 0 0 / 0.4); }
+  &:hover { transform: translateY(-2px); filter: brightness(0.95); box-shadow: 0 18px 45px -18px oklch(0.36 0.11 155 / 0.75), inset 0 1px 0 oklch(1 0 0 / 0.3); }
   &:active { transform: translateY(0); }
 }
 
@@ -146,16 +164,16 @@
   padding: 0.8rem 1.5rem;
   border-radius: 9999px;
   font-weight: 500;
-  color: oklch(0.9 0.12 92);
-  border: 1px solid oklch(0.82 0.14 85 / 0.5);
-  background: oklch(0.82 0.14 85 / 0.05);
+  color: oklch(0.32 0.11 155);
+  border: 1px solid oklch(0.48 0.14 155 / 0.55);
+  background: oklch(0.48 0.14 155 / 0.06);
   transition: all 0.25s ease;
-  &:hover { background: oklch(0.82 0.14 85 / 0.12); border-color: oklch(0.82 0.14 85 / 0.9); transform: translateY(-2px); }
+  &:hover { background: oklch(0.48 0.14 155 / 0.14); border-color: oklch(0.48 0.14 155 / 0.9); transform: translateY(-2px); }
 }
 
 @utility gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, oklch(0.82 0.14 85 / 0.6), transparent);
+  background: linear-gradient(90deg, transparent, oklch(0.48 0.14 155 / 0.6), transparent);
 }
 
 @keyframes float-slow {
@@ -169,7 +187,7 @@
   100% { background-position: 200% 0; }
 }
 @utility shimmer-gold {
-  background: linear-gradient(90deg, oklch(0.62 0.13 70) 0%, oklch(0.92 0.11 92) 50%, oklch(0.62 0.13 70) 100%);
+  background: linear-gradient(90deg, oklch(0.36 0.11 155) 0%, oklch(0.6 0.15 155) 50%, oklch(0.36 0.11 155) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -182,3 +200,21 @@
   to { opacity: 1; transform: translateY(0); }
 }
 @utility fade-up { animation: fade-up 0.7s ease-out both; }
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); box-shadow: 0 6px 18px -6px oklch(0.58 0.22 25 / 0.55); }
+  50% { transform: scale(1.05); box-shadow: 0 10px 24px -6px oklch(0.58 0.22 25 / 0.75); }
+}
+@utility offer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: oklch(0.98 0.01 90);
+  background-image: linear-gradient(135deg, oklch(0.62 0.22 30), oklch(0.55 0.2 20));
+  animation: pulse-badge 2.4s ease-in-out infinite;
+}

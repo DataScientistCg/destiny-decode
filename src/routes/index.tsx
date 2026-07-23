@@ -501,7 +501,7 @@ function Footer() {
           <div>
             <div className="font-display text-sm font-semibold text-gradient-gold uppercase tracking-widest mb-4">Contact</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2"><MapPin className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> NEW DELHI</li>
+              
               <li className="flex items-start gap-2"><Phone className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> <a href={`tel:${PHONE_TEL}`} className="hover:text-[color:var(--gold)] transition-colors">{PHONE}</a></li>
               <li className="flex items-start gap-2"><Mail className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> <a href={`mailto:${EMAIL}`} className="hover:text-[color:var(--gold)] transition-colors break-all">{EMAIL}</a></li>
               <li className="flex items-start gap-2"><Instagram className="h-4 w-4 text-[color:var(--gold)] mt-0.5 shrink-0" /> <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--gold)] transition-colors">@destiny_decod</a></li>

@@ -4,7 +4,6 @@ import {
   Phone,
   Instagram,
   Mail,
-  MapPin,
   Sparkles,
   Star,
   ShieldCheck,
@@ -12,12 +11,10 @@ import {
   ArrowUpRight,
   Menu,
   X,
-  Calculator,
   Heart,
   Baby,
   Briefcase,
   Car,
-  User,
   Users,
   Signature,
   Smartphone,
@@ -25,6 +22,7 @@ import {
   QrCode,
   CheckCircle2,
   MessageCircle,
+  Flame,
 } from "lucide-react";
 import brandLogo from "@/assets/brand-logo.jpg.asset.json";
 import profilePhoto from "@/assets/profile-photo.jpg.asset.json";

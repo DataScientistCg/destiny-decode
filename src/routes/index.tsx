@@ -412,9 +412,8 @@ function Contact() {
     <section id="contact" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Ready to Begin?" title="Get Your" highlight="Personal Consultation" />
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6">
           {[
-            { icon: MapPin, label: "Office", value: "NEW DELHI" },
             { icon: Phone, label: "Phone", value: PHONE, href: `tel:${PHONE_TEL}` },
             { icon: Instagram, label: "Instagram", value: "@destiny_decod", href: INSTAGRAM_URL, external: true },
           ].map(({ icon: Icon, label, value, href, external }) => (

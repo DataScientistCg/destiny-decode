@@ -40,12 +40,22 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify static output
+      - name: Show build output
         run: |
-          echo "=== Build output ==="
-          find .output -maxdepth 4 -type f | sort
-          echo "=== Checking index.html ==="
-          test -f .output/public/index.html
+          echo "=== .output/public ==="
+          find .output/public -maxdepth 3 -type f | sort
+
+      - name: Prepare Pages
+        run: |
+          mkdir -p pages
+          cp -R .output/public/. pages/
+
+          if [ -f "pages/_shell.html" ]; then
+            cp pages/_shell.html pages/index.html
+            cp pages/_shell.html pages/404.html
+          elif [ -f "pages/index.html" ]; then
+            cp pages/index.html pages/404.html
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -53,7 +63,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./.output/public"
+          path: "./pages"
 
       - name: Deploy to GitHub Pages
         id: deployment

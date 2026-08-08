@@ -40,27 +40,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prepare GitHub Pages
+      - name: Verify static output
         run: |
-          mkdir -p ./pages
-          if [ -f "./.output/public/index.html" ]; then
-            cp -R ./.output/public/. ./pages/
-          elif [ -f "./dist/index.html" ]; then
-            cp -R ./dist/. ./pages/
-          else
-            echo "ERROR: No index.html found in build output"
-            echo "=== .output/public ==="
-            find ./.output/public -maxdepth 3 -type f 2>/dev/null | sort || true
-            echo "=== dist ==="
-            find ./dist -maxdepth 3 -type f 2>/dev/null | sort || true
-            exit 1
-          fi
-
-      - name: Add SPA fallback
-        run: |
-          if [ -f "./pages/index.html" ]; then
-            cp ./pages/index.html ./pages/404.html
-          fi
+          echo "=== Build output ==="
+          find .output -maxdepth 4 -type f | sort
+          echo "=== Checking index.html ==="
+          test -f .output/public/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -68,7 +53,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./pages"
+          path: "./.output/public"
 
       - name: Deploy to GitHub Pages
         id: deployment

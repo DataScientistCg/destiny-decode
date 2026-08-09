@@ -70,9 +70,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Destiny Decode — Decode Your Destiny with Numerology" },
       { name: "twitter:description", content: "Premium numerology by Sudhanshuu Bharti. Personalized reports, name correction, business & career guidance. Apply now." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1BPmJxZb0KhYEP4gB61dsLFEoH23/social-images/social-1784610956756-web_logo.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1BPmJxZb0KhYEP4gB61dsLFEoH23/social-images/social-1784610956756-web_logo.webp" },
-    ],
+      { property: "og:image", content: "/destinydecodelogo.jpeg" },
+      { name: "twitter:image", content: "/destinydecodelogo.jpeg" },    ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.png", type: "image/png" },

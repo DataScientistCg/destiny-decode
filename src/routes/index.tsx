@@ -24,7 +24,6 @@ import {
   MessageCircle,
   Flame,
 } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -237,7 +236,7 @@ function About() {
         <div className="relative">
           <div className="aspect-[4/5] rounded-3xl glass overflow-hidden relative shadow-gold-lg">
             <img
-              src={profilePhoto.url}
+              src="/destinydecodeprofilepic.jpeg"
               alt="Sudhanshuu Bharti — Numerology Consultant"
               className="absolute inset-0 h-full w-full object-cover"
               loading="lazy"

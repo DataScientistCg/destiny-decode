@@ -24,7 +24,6 @@ import {
   MessageCircle,
   Flame,
 } from "lucide-react";
-import brandLogo from "@/assets/brand-logo.jpg.asset.json";
 import profilePhoto from "@/assets/profile-photo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -114,7 +113,7 @@ function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
         <a href="#home" className="flex items-center gap-3 group shrink-0">
           <div className="h-11 w-11 rounded-lg overflow-hidden shadow-gold border border-[color:var(--gold)]/40 bg-background">
-            <img src={brandLogo.url} alt="Destiny Decode logo" className="h-full w-full object-cover" />
+            <img src="/destinydecodelogo.jpeg" alt="Destiny Decode logo" className="h-full w-full object-cover" />
           </div>
           <div className="hidden sm:flex flex-col leading-none">
             <span className="font-display text-lg font-bold text-gradient-gold tracking-wider">DESTINY</span>
@@ -174,7 +173,7 @@ function Hero() {
       </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <div className="mx-auto mb-8 h-28 w-28 sm:h-32 sm:w-32 rounded-full overflow-hidden border border-[color:var(--gold)]/50 shadow-gold-lg float-slow bg-background hover:scale-105 transition-transform">
-          <img src={brandLogo.url} alt="Destiny Decode brand logo" className="h-full w-full object-cover" />
+         <img src="/destinydecodelogo.jpeg" alt="Destiny Decode brand logo" className="h-full w-full object-cover" />
         </div>
         <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-[color:var(--gold)] fade-up">
           <Sparkles className="h-3.5 w-3.5" /> Know Your Numbers. Know Yourself.
@@ -489,7 +488,7 @@ function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
               <div className="h-11 w-11 rounded-lg overflow-hidden shadow-gold border border-[color:var(--gold)]/40 bg-background">
-                <img src={brandLogo.url} alt="Destiny Decode logo" className="h-full w-full object-cover" />
+                <img src="/destinydecodelogo.jpeg" alt="Destiny Decode logo" className="h-full w-full object-cover" />
               </div>
               <div>
                 <div className="font-display text-lg font-bold text-gradient-gold tracking-wider">DESTINY DECODE</div>

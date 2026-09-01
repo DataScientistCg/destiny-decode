@@ -40,7 +40,8 @@ export const Route = createFileRoute("/")({
 const APPLY_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSc4gr6Y9BI0r3I5gYlN3K9VMgytIMOLXlnQ4YgzrtACQ6WLQQ/viewform";
 const INSTAGRAM_URL =
-  "https://www.instagram.com/destiny_decod?igsh=MWdtdTNnaTA5amdvbw%3D%3D&utm_source=qr";
+  "https://www.instagram.com/
+  ?igsh=MWdtdTNnaTA5amdvbw%3D%3D&utm_source=qr";
 const PHONE = "7065-455-955";
 const PHONE_TEL = "+917065455955";
 const WHATSAPP = `https://wa.me/917065455955`;
@@ -476,7 +477,7 @@ function Contact() {
         <div className="grid sm:grid-cols-2 gap-6">
           {[
             { icon: Phone, label: "Phone", value: PHONE, href: `tel:${PHONE_TEL}` },
-            { icon: Instagram, label: "Instagram", value: "@destiny_decod", href: INSTAGRAM_URL, external: true },
+            { icon: Instagram, label: "Instagram", value: "@destiny_decode", href: INSTAGRAM_URL, external: true },
           ].map(({ icon: Icon, label, value, href, external }) => (
             <a
               key={label}

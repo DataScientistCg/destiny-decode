@@ -85,7 +85,7 @@ const TESTIMONIALS = [
 
 const UPI_APPS = ["PhonePe", "Google Pay", "Paytm", "BHIM"];
 
-function ApplyButton({ label = "Apply Now", className = "btn-gold", icon = true }: { label?: string; className?: string; icon?: boolean }) {
+function ApplyButton({ label = "Consult Now", className = "btn-gold", icon = true }: { label?: string; className?: string; icon?: boolean }) {
   return (
     <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" className={className}>
       {label}

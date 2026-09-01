@@ -296,55 +296,88 @@ function Services() {
   return (
     <section id="services" className="py-20 sm:py-28 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader eyebrow="Premium Offerings" title="Our" highlight="Services" />
+        <SectionHeader
+          eyebrow="Premium Offerings"
+          title="Our"
+          highlight="Services"
+        />
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map(({ icon: Icon, name, price, oldPrice, offer, savings, desc }) => (
-            <div key={name} className={`relative glass glass-hover rounded-2xl p-6 flex flex-col ${offer ? "ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg" : ""}`}>
-              {offer && (
+          {SERVICES.map(({ icon: Icon, name, price, oldPrice, desc }) => {
+            
+            // Automatically show 50% OFF on every service
+            const numericPrice = Number(
+              String(price).replace(/[^\d.]/g, "")
+            );
+
+            const calculatedOldPrice =
+              oldPrice || `₹${Math.round(numericPrice * 2)}`;
+
+            const savings = `₹${Math.round(
+              Number(String(calculatedOldPrice).replace(/[^\d.]/g, "")) -
+                numericPrice
+            )}`;
+
+            const offer = "50% OFF";
+
+            return (
+              <div
+                key={name}
+                className="relative glass glass-hover rounded-2xl p-6 flex flex-col ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg"
+              >
+                {/* OFFER BADGE */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap">
-                  <Flame className="h-3.5 w-3.5" /> {offer}
+                  <Flame className="h-3.5 w-3.5" />
+                  {offer}
                 </div>
-              )}
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="h-12 w-12 rounded-xl bg-gradient-gold grid place-items-center shadow-gold shrink-0">
-                  <Icon className="h-5 w-5 text-primary-foreground" />
+
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  
+                  {/* SERVICE ICON */}
+                  <div className="h-12 w-12 rounded-xl bg-gradient-gold grid place-items-center shadow-gold shrink-0">
+                    <Icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+
+                  {/* PRICE */}
+                  <div className="text-right">
+                    <div className="text-[10px] uppercase tracking-widest text-[color:var(--gold-dark)] font-semibold">
+                      Limited Time Offer
+                    </div>
+
+                    <div className="flex items-baseline justify-end gap-2 leading-none mt-1">
+                      <span className="text-sm text-muted-foreground line-through">
+                        {calculatedOldPrice}
+                      </span>
+
+                      <span className="font-display text-3xl font-bold text-gradient-gold">
+                        {price}
+                      </span>
+                    </div>
+
+                    {/* SAVINGS */}
+                    <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[color:var(--gold)]/10 border border-[color:var(--gold)]/30 px-2 py-0.5 text-[11px] font-semibold text-[color:var(--gold-dark)]">
+                      You Save {savings}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-right">
-                  {offer ? (
-                    <>
-                      <div className="text-[10px] uppercase tracking-widest text-[color:var(--gold-dark)] font-semibold">Limited Time Offer</div>
-                      <div className="flex items-baseline justify-end gap-2 leading-none mt-1">
-                        {oldPrice && (
-                          <span className="text-sm text-muted-foreground line-through">{oldPrice}</span>
-                        )}
-                        <span className="font-display text-3xl font-bold text-gradient-gold">{price}</span>
-                      </div>
-                      {savings && (
-                        <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[color:var(--gold)]/10 border border-[color:var(--gold)]/30 px-2 py-0.5 text-[11px] font-semibold text-[color:var(--gold-dark)]">
-                          You Save {savings}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Price</div>
-                      <div className="flex items-baseline justify-end gap-2 leading-none">
-                        {oldPrice && (
-                          <span className="text-sm text-muted-foreground line-through">{oldPrice}</span>
-                        )}
-                        <span className="font-display text-2xl font-bold text-gradient-gold">{price}</span>
-                      </div>
-                    </>
-                  )}
+
+                {/* SERVICE NAME */}
+                <h3 className="font-display text-lg font-semibold text-foreground">
+                  {name}
+                </h3>
+
+                {/* DESCRIPTION */}
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">
+                  {desc}
+                </p>
+
+                {/* APPLY BUTTON */}
+                <div className="mt-5">
+                  <ApplyButton className="btn-gold w-full" />
                 </div>
               </div>
-              <h3 className="font-display text-lg font-semibold text-foreground">{name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
-              <div className="mt-5">
-                <ApplyButton className="btn-gold w-full" />
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

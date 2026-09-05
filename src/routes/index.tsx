@@ -293,6 +293,7 @@ function About() {
   );
 }
 
+```jsx
 function Services() {
   return (
     <section id="services" className="py-20 sm:py-28 relative">
@@ -304,78 +305,172 @@ function Services() {
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map(({ icon: Icon, name, price, oldPrice, desc }) => {
-            
-            // Automatically show 50% OFF on every service
-            const numericPrice = Number(
-              String(price).replace(/[^\d.]/g, "")
-            );
+          {SERVICES.map(({ icon: Icon, name, desc }) => {
 
-            const calculatedOldPrice =
-              oldPrice || `₹${Math.round(numericPrice * 2)}`;
+            /*
+             * =====================================================
+             * 🔥 HOT DEAL PRICING
+             * Every service is ₹499
+             * Original prices are selected to create different
+             * discount percentages.
+             * =====================================================
+             */
 
-            const savings = `₹${Math.round(
-              Number(String(calculatedOldPrice).replace(/[^\d.]/g, "")) -
-                numericPrice
-            )}`;
+            const pricing = {
+              "Personal Numerology Report with Remedies": {
+                oldPrice: 998,
+                discount: 50,
+              },
 
-            const offer = "50% OFF";
+              "Name Correction": {
+                oldPrice: 1248,
+                discount: 60,
+              },
+
+              "Business Name Calculation & Suitability": {
+                oldPrice: 1663,
+                discount: 70,
+              },
+
+              "Car Number Suggestion": {
+                oldPrice: 1248,
+                discount: 60,
+              },
+
+              "Baby Name Suggestion": {
+                oldPrice: 1996,
+                discount: 75,
+              },
+
+              "Baby Suitable DOB Suggestion": {
+                oldPrice: 2495,
+                discount: 80,
+              },
+
+              "Relationship Compatibility Report": {
+                oldPrice: 1248,
+                discount: 60,
+              },
+
+              "Marriage Matching Compatibility Report": {
+                oldPrice: 1663,
+                discount: 70,
+              },
+
+              "Mobile Number Correction": {
+                oldPrice: 998,
+                discount: 50,
+              },
+
+              "Career Suitability Guidance": {
+                oldPrice: 1663,
+                discount: 70,
+              },
+            };
+
+            const servicePricing =
+              pricing[name] || {
+                oldPrice: 998,
+                discount: 50,
+              };
+
+            const oldPrice = `₹${servicePricing.oldPrice}`;
+            const offerPrice = "₹499";
+            const offer = `${servicePricing.discount}% OFF`;
+
+            const savings =
+              servicePricing.oldPrice - 499;
 
             return (
               <div
                 key={name}
                 className="relative glass glass-hover rounded-2xl p-6 flex flex-col ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg"
               >
-                {/* OFFER BADGE */}
+
+                {/* =================================================
+                    🔥 HOT DEAL BADGE
+                   ================================================= */}
+
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap">
                   <Flame className="h-3.5 w-3.5" />
                   {offer}
                 </div>
 
+
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  
-                  {/* SERVICE ICON */}
+
+                  {/* =================================================
+                      SERVICE ICON
+                     ================================================= */}
+
                   <div className="h-12 w-12 rounded-xl bg-gradient-gold grid place-items-center shadow-gold shrink-0">
                     <Icon className="h-5 w-5 text-primary-foreground" />
                   </div>
 
-                  {/* PRICE */}
+
+                  {/* =================================================
+                      PRICE
+                     ================================================= */}
+
                   <div className="text-right">
+
                     <div className="text-[10px] uppercase tracking-widest text-[color:var(--gold-dark)] font-semibold">
-                      Limited Time Offer
+                      🔥 Hot Deal
                     </div>
 
                     <div className="flex items-baseline justify-end gap-2 leading-none mt-1">
+
+                      {/* OLD PRICE */}
                       <span className="text-sm text-muted-foreground line-through">
-                        {calculatedOldPrice}
+                        {oldPrice}
                       </span>
 
+                      {/* FINAL PRICE */}
                       <span className="font-display text-3xl font-bold text-gradient-gold">
-                        {price}
+                        {offerPrice}
                       </span>
+
                     </div>
 
-                    {/* SAVINGS */}
+
+                    {/* =================================================
+                        SAVINGS
+                       ================================================= */}
+
                     <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[color:var(--gold)]/10 border border-[color:var(--gold)]/30 px-2 py-0.5 text-[11px] font-semibold text-[color:var(--gold-dark)]">
-                      You Save {savings}
+                      You Save ₹{savings}
                     </div>
+
                   </div>
                 </div>
 
-                {/* SERVICE NAME */}
+
+                {/* =================================================
+                    SERVICE NAME
+                   ================================================= */}
+
                 <h3 className="font-display text-lg font-semibold text-foreground">
                   {name}
                 </h3>
 
-                {/* DESCRIPTION */}
+
+                {/* =================================================
+                    DESCRIPTION
+                   ================================================= */}
+
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">
                   {desc}
                 </p>
 
-                {/* APPLY BUTTON */}
+
+                {/* =================================================
+                    APPLY BUTTON
+                   ================================================= */}
+
                 <div className="mt-5">
                   <ApplyButton className="btn-gold w-full" />
                 </div>
+
               </div>
             );
           })}
@@ -384,6 +479,8 @@ function Services() {
     </section>
   );
 }
+```
+
 
 function Payment() {
   return (

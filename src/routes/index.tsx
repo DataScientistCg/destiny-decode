@@ -66,16 +66,105 @@ type Service = {
 };
 
 const SERVICES: Service[] = [
-  { icon: Sparkles, name: "Personal Numerology Report with Remedies", price: "₹499", oldPrice: "₹1100", offer: "50% OFF – First Consultation", savings: "₹601", desc: "Full personalised numerology reading with tailored remedies for lasting change." },
-  { icon: Signature, name: "Name Correction", price: "₹1499", desc: "Refine your name spelling to align with prosperity and success vibrations." },
-  { icon: Briefcase, name: "Business Name Calculation & Suitability", price: "₹2100", desc: "Brand and business name analysis for growth, luck and long-term success." },
-  { icon: Car, name: "Car Number Suggestion", price: "₹1100", desc: "Choose a vehicle number that supports safety, harmony and prosperity." },
-  { icon: Baby, name: "Baby Name Suggestion", price: "₹2100", desc: "Auspicious baby names aligned with birth chart and destiny numbers." },
-  { icon: CalendarHeart, name: "Baby Suitable DOB Suggestion", price: "₹2100", desc: "Ideal date of birth guidance for planned deliveries to align cosmic energy." },
-  { icon: Heart, name: "Relationship Compatibility Report", price: "₹1100", desc: "Deep compatibility scoring and guidance for couples and partners." },
-  { icon: Users, name: "Marriage Matching Compatibility Report", price: "₹2100", desc: "Numerology-based marriage matching to check life-long compatibility." },
-  { icon: Smartphone, name: "Mobile Number Correction", price: "₹499", desc: "Align your mobile number's vibration with your destiny and goals." },
-  { icon: Briefcase, name: "Career Suitability Guidance", price: "₹2100", desc: "Personalised career direction based on your core numerology numbers." },
+  {
+    icon: Sparkles,
+    name: "Personal Numerology Report with Remedies",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Full personalised numerology reading with tailored remedies for lasting change.",
+  },
+
+  {
+    icon: Signature,
+    name: "Name Correction",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Refine your name spelling to align with prosperity and success vibrations.",
+  },
+
+  {
+    icon: Briefcase,
+    name: "Business Name Calculation & Suitability",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Brand and business name analysis for growth, luck and long-term success.",
+  },
+
+  {
+    icon: Car,
+    name: "Car Number Suggestion",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Choose a vehicle number that supports safety, harmony and prosperity.",
+  },
+
+  {
+    icon: Baby,
+    name: "Baby Name Suggestion",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Auspicious baby names aligned with birth chart and destiny numbers.",
+  },
+
+  {
+    icon: CalendarHeart,
+    name: "Baby Suitable DOB Suggestion",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Ideal date of birth guidance for planned deliveries to align cosmic energy.",
+  },
+
+  {
+    icon: Heart,
+    name: "Relationship Compatibility Report",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Deep compatibility scoring and guidance for couples and partners.",
+  },
+
+  {
+    icon: Users,
+    name: "Marriage Matching Compatibility Report",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Numerology-based marriage matching to check life-long compatibility.",
+  },
+
+  {
+    icon: Smartphone,
+    name: "Mobile Number Correction",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Align your mobile number's vibration with your destiny and goals.",
+  },
+
+  {
+    icon: Briefcase,
+    name: "Career Suitability Guidance",
+    price: "₹499",
+    oldPrice: "₹1100",
+    offer: "50% OFF • HOT DEAL",
+    savings: "₹601",
+    desc: "Personalised career direction based on your core numerology numbers.",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -304,15 +393,16 @@ function Services() {
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map(({ icon: Icon, name, desc }) => {
-
-            // 🔥 SAME HOT DEAL FOR EVERY SERVICE
-            const oldPrice = 1100;
-            const offerPrice = 499;
-            const offer = "50% OFF";
-            const savings = oldPrice - offerPrice;
-
-            return (
+          {SERVICES.map(
+            ({
+              icon: Icon,
+              name,
+              price,
+              oldPrice,
+              offer,
+              savings,
+              desc,
+            }) => (
               <div
                 key={name}
                 className="relative glass glass-hover rounded-2xl p-6 flex flex-col ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg"
@@ -321,7 +411,7 @@ function Services() {
                 {/* 🔥 HOT DEAL BADGE */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap flex items-center gap-1.5">
                   <Flame className="h-3.5 w-3.5" />
-                  🔥 HOT DEAL • {offer}
+                  🔥 {offer}
                 </div>
 
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -342,19 +432,19 @@ function Services() {
 
                       {/* ORIGINAL PRICE */}
                       <span className="text-sm text-muted-foreground line-through">
-                        ₹1,100
+                        {oldPrice}
                       </span>
 
                       {/* OFFER PRICE */}
                       <span className="font-display text-3xl font-bold text-gradient-gold">
-                        ₹499
+                        {price}
                       </span>
 
                     </div>
 
                     {/* SAVINGS */}
                     <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[color:var(--gold)]/10 border border-[color:var(--gold)]/30 px-2 py-0.5 text-[11px] font-semibold text-[color:var(--gold-dark)]">
-                      You Save ₹601
+                      You Save {savings}
                     </div>
 
                   </div>
@@ -376,8 +466,8 @@ function Services() {
                 </div>
 
               </div>
-            );
-          })}
+            )
+          )}
         </div>
       </div>
     </section>

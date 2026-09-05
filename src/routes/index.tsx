@@ -40,8 +40,7 @@ export const Route = createFileRoute("/")({
 const APPLY_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSc4gr6Y9BI0r3I5gYlN3K9VMgytIMOLXlnQ4YgzrtACQ6WLQQ/viewform";
 const INSTAGRAM_URL =
-  "https://www.instagram.com/
-  ?igsh=MWdtdTNnaTA5amdvbw%3D%3D&utm_source=qr";
+  "https://www.instagram.com/destiny_decode/";
 const PHONE = "7065-455-955";
 const PHONE_TEL = "+917065455955";
 const WHATSAPP = `https://wa.me/917065455955`;

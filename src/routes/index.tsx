@@ -306,35 +306,10 @@ function Services() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map(({ icon: Icon, name, desc }) => {
 
-            // ==========================================
-            // 🔥 HOT DEAL PRICING
-            // Final price of every service = ₹499
-            // ==========================================
-
-            const pricing = {
-              "Personal Numerology Report with Remedies": 998,
-              "Name Correction": 1499,
-              "Business Name Calculation & Suitability": 2100,
-              "Car Number Suggestion": 1100,
-              "Baby Name Suggestion": 2100,
-              "Baby Suitable DOB Suggestion": 2100,
-              "Relationship Compatibility Report": 1100,
-              "Marriage Matching Compatibility Report": 2100,
-              "Mobile Number Correction": 998,
-              "Career Suitability Guidance": 2100,
-            };
-
-            const oldPrice = pricing[name] || 998;
-
-            // FINAL SALE PRICE
+            // 🔥 SAME HOT DEAL FOR EVERY SERVICE
+            const oldPrice = 1100;
             const offerPrice = 499;
-
-            // ACTUAL DISCOUNT PERCENTAGE
-            const discountPercentage = Math.round(
-              ((oldPrice - offerPrice) / oldPrice) * 100
-            );
-
-            // SAVINGS
+            const offer = "50% OFF";
             const savings = oldPrice - offerPrice;
 
             return (
@@ -343,13 +318,10 @@ function Services() {
                 className="relative glass glass-hover rounded-2xl p-6 flex flex-col ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg"
               >
 
-                {/* ==========================================
-                    🔥 HOT DEAL BADGE
-                   ========================================== */}
-
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap">
+                {/* 🔥 HOT DEAL + 50% OFF BADGE */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap flex items-center gap-1.5">
                   <Flame className="h-3.5 w-3.5" />
-                  {discountPercentage}% OFF
+                  🔥 HOT DEAL • {offer}
                 </div>
 
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -363,17 +335,17 @@ function Services() {
                   <div className="text-right">
 
                     <div className="text-[10px] uppercase tracking-widest text-[color:var(--gold-dark)] font-semibold">
-                      🔥 HOT DEAL
+                      🔥 Limited Time Offer
                     </div>
 
                     <div className="flex items-baseline justify-end gap-2 leading-none mt-1">
 
-                      {/* ORIGINAL PRICE */}
+                      {/* CUT PRICE */}
                       <span className="text-sm text-muted-foreground line-through">
                         ₹{oldPrice}
                       </span>
 
-                      {/* FINAL PRICE */}
+                      {/* OFFER PRICE */}
                       <span className="font-display text-3xl font-bold text-gradient-gold">
                         ₹{offerPrice}
                       </span>
@@ -411,7 +383,6 @@ function Services() {
     </section>
   );
 }
-
 
 function Payment() {
   return (

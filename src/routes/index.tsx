@@ -318,7 +318,7 @@ function Services() {
                 className="relative glass glass-hover rounded-2xl p-6 flex flex-col ring-1 ring-[color:var(--gold)]/40 shadow-gold-lg"
               >
 
-                {/* 🔥 HOT DEAL + 50% OFF BADGE */}
+                {/* 🔥 HOT DEAL BADGE */}
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 offer-badge whitespace-nowrap flex items-center gap-1.5">
                   <Flame className="h-3.5 w-3.5" />
                   🔥 HOT DEAL • {offer}
@@ -335,26 +335,26 @@ function Services() {
                   <div className="text-right">
 
                     <div className="text-[10px] uppercase tracking-widest text-[color:var(--gold-dark)] font-semibold">
-                      🔥 Limited Time Offer
+                      🔥 LIMITED TIME OFFER
                     </div>
 
                     <div className="flex items-baseline justify-end gap-2 leading-none mt-1">
 
-                      {/* CUT PRICE */}
+                      {/* ORIGINAL PRICE */}
                       <span className="text-sm text-muted-foreground line-through">
-                        ₹{oldPrice}
+                        ₹1,100
                       </span>
 
                       {/* OFFER PRICE */}
                       <span className="font-display text-3xl font-bold text-gradient-gold">
-                        ₹{offerPrice}
+                        ₹499
                       </span>
 
                     </div>
 
                     {/* SAVINGS */}
                     <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-[color:var(--gold)]/10 border border-[color:var(--gold)]/30 px-2 py-0.5 text-[11px] font-semibold text-[color:var(--gold-dark)]">
-                      You Save ₹{savings}
+                      You Save ₹601
                     </div>
 
                   </div>
